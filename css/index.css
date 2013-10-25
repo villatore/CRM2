@@ -65,3 +65,17 @@ a:-webkit-any-link { text-decoration: none;cursor: auto;}
 #legendGraphic ul li { display: inline; color: white;}
 
 .bubble  	{ font-size: 14px; margin-top: 10px;height: 110px;padding: 10px;background: #CDE9FF;border: #007FC1 solid 4px;-webkit-border-radius: 10px;border-radius: 10px;color: #007FC1;}
+
+/* Portrait layout (default) */
+.app {
+    background:url(../img/logo2.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}

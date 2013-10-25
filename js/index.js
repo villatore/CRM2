@@ -283,12 +283,11 @@
         var li = $('<li/>');
 
         alert("se manda a vibrar");
-        navigator.notification.vibrate();
-        console.log('algo paso1.............');
+        navigator.notification.vibrate(100);
+        console.log('inicia camara.............');
         navigator.camera.getPicture(onPhotoSuccess, onPhotoFail, { quality: 50 });
-        console.log('algo paso1a.............');
+        console.log('termina camara.............');
 
-        alert("se manda a vibrar");
         for (estatus in comisiones) {
             var titulo = estatus.toLowerCase(), titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1) + 's';
             var a = $('<a/>', { text: titulo,
@@ -406,3 +405,28 @@
         $('.detailPayments').listview('refresh');
     });
 })(jQuery);
+
+var app = {
+    // Application Constructor
+    initialize: function () {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function () {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicity call 'app.receivedEvent(...);'
+    onDeviceReady: function () {
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function (id) {
+        window.location = "index2.html";
+    }
+};
