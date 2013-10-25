@@ -1,0 +1,67 @@
+@import url('font-awesome.css');
+a, input, button { -ms-touch-action: none !important;}
+a:-webkit-any-link { text-decoration: none;cursor: auto;}
+.crm20-col-a { width:30% !important;color:grey;}
+.crm20-col-b { width:70% !important;}
+.crm20-col-c { width:20% !important;color:#007FC1;font-size: 10px;}
+.crm20-col-d { width:80% !important;}
+.bubble-a    { width: 100%; margin-right: -.5px;}
+.salesQuantity  { margin-top: 5px !important;}
+#intelisis		{ width: 262px;margin: auto;}
+#detailsSales 	{ margin-top: -20px;}
+.center			{ text-align: center !important;} 
+/*canvas 			{ width: 100% !important;max-width: 800px;height: auto !important;}*/
+/** Componente **/
+.crm20-logo     { margin: auto;}
+.crm20-logoWeb	{ text-align: center;}
+.crm20-login 	{ margin: auto;width: 236px;}
+.crm20-error	{ font-size:12px;margin-bottom:25px;color:#b93f39;padding:10px;text-align: center;vertical-align: center;}
+.crm20-form 	{ width: 230px;margin: 10px auto;padding: 15px;position: relative;background: rgba(175, 175, 175, 0.137255);border-radius: 4px;color: #7e7975;box-shadow:0 2px 2px rgba(0,0,0,0.2),0 1px 5px rgba(0,0,0,0.2),0 0 0 12px rgba(255,255,255,0.4);}
+.crm20-form h1	{ font-size: 15px;font-weight: bold;color: #bdb5aa;padding-bottom: 8px;border-bottom: 1px solid #EBE6E2;text-shadow: 0 2px 0 rgba(255,255,255,0.8);box-shadow: 0 1px 0 rgba(255,255,255,0.8);}
+.crm20-form h1 .log-in,
+.crm20-form h1 .sign-up	{ display: inline-block;text-transform: uppercase;}
+.crm20-form h1 .log-in 	{ color: #6c6763;padding-right: 2px;}
+.crm20-form h1 .sign-up { color: #6facd5;padding-left: 2px;}
+.crm20-form .float 		{ width: 48%;float: left;}
+.crm20-form .float2 	{ width: 90%;position: absolute;margin-top:-73px;}
+.crm20-form .float:first-of-type 	{ padding-right: 5px;}
+.crm20-form .float:last-of-type 	{ padding-left: 5px;}
+.crm20-form label 	{ display: block;padding: 0 0 5px 2px;cursor: pointer;text-transform: uppercase;font-weight: 400;text-shadow: 0 1px 0 rgba(255,255,255,0.8);font-size: 11px;}
+.crm20-form label i { margin-right: 5px;display: inline-block;width: 10px;}
+.crm20-form input[type=text],
+.crm20-form input[type=password] 	{ font-family: 'Lato', Calibri, Arial, sans-serif;font-size: 13px;font-weight: 400;display: block;width: 90%;padding: 5px;margin-bottom: 5px;border: 3px solid #ebe6e2;border-radius: 5px;-webkit-transition: all 0.3s ease-out;-moz-transition: all 0.3s ease-out;-ms-transition: all 0.3s ease-out;-o-transition: all 0.3s ease-out;transition: all 0.3s ease-out;}
+.crm20-form input[type=text]:hover,
+.crm20-form input[type=password]:hover 	{ border-color: #CCC;}
+.crm20-form label:hover ~ input 		{ border-color: #CCC;}
+.crm20-form input[type=text]:focus,
+.crm20-form input[type=password]:focus { border-color: #BBB;outline: none;}
+.crm20-form input[type=submit],
+.crm20-form .log-twitter {width: 93%;height: 38px;float: left;position: relative;box-shadow: inset 0 1px rgba(255,255,255,0.3);border-radius: 3px;cursor: pointer;font-family: 'Lato', Calibri, Arial, sans-serif;font-size: 14px;line-height: 38px; /* Same as height */text-align: center;font-weight: bold;}
+.crm20-form input[type=submit] { margin-left: 3%;margin-top: -10px;background: #fbd568;background: -moz-linear-gradient(#fbd568, #ffb347);background: -ms-linear-gradient(#fbd568, #ffb347);background: -o-linear-gradient(#fbd568, #ffb347);background: -webkit-gradient(linear, 0 0, 0 100%, from(#fbd568), to(#ffb347));background: -webkit-linear-gradient(#fbd568, #ffb347);background: linear-gradient(#fbd568, #ffb347);border: 1px solid #f4ab4c;color: #996319;text-shadow: 0 1px rgba(255,255,255,0.3);}
+.crm20-form input[type=submit]:active,.crm20-form .log-twitter:active { top: 1px;}
+/* Fallback fro broswers that don't support box shadows */
+.no-boxshadow .crm20-form input[type=submit]:hover 	{ background: #ffb347;}
+.no-boxshadow .crm20-form:hover 					{ background: #2a8ac4;}
+.crm20-form p:last-of-type 							{ clear: both;}
+.crm20-form .opt 									{ text-align: right;margin-right: 3px;}
+/* Notificaciones */
+.crm20-aviso { cursor: pointer;border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; font-weight: bold; }
+.crm20-fallo { box-shadow: 0 1px 2px #fbb5b5 inset, 0 1px 1px #dfdfdf; -webkit-box-shadow: 0 1px 2px #fbb5b5 inset, 0 1px 1px #dfdfdf; -moz-box-shadow: 0 1px 2px #fbb5b5 inset, 0 1px 1px #dfdfdf; border: 1px solid #dfa59b; color: #7d2a1c;background: #f0b5a1;background: -moz-linear-gradient(top,  #f0b5a1 0%, #de9d8a 100%);background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0b5a1), color-stop(100%,#de9d8a));background: -webkit-linear-gradient(top,  #f0b5a1 0%,#de9d8a 100%);background: -o-linear-gradient(top,  #f0b5a1 0%,#de9d8a 100%);background: -ms-linear-gradient(top,  #f0b5a1 0%,#de9d8a 100%);background: linear-gradient(top,  #f0b5a1 0%,#de9d8a 100%);}
+.crm20-informacion { background-image:url('images/info-loader.gif');padding:8px;text-align:center;border: 1px solid #bcd9f3;color: #4579aa;background: #deedf9;background: -moz-linear-gradient(top,  #deedf9 0%, #cde5f7 100%);background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#deedf9), color-stop(100%,#cde5f7));background: -webkit-linear-gradient(top,  #deedf9 0%,#cde5f7 100%);background: -o-linear-gradient(top,  #deedf9 0%,#cde5f7 100%);background: -ms-linear-gradient(top,  #deedf9 0%,#cde5f7 100%);background: linear-gradient(top,  #deedf9 0%,#cde5f7 100%);box-shadow: 0 1px 2px #e9f3fb inset, 0 1px 1px #dfdfdf; -webkit-box-shadow: 0 1px 2px #e9f3fb inset, 0 1px 1px #dfdfdf; -moz-box-shadow: 0 1px 2px #e9f3fb inset, 0 1px 1px #dfdfdf;}
+
+.crm20-fallo .crm20-informacion > p { text-shadow: 0 1px 0 #DDD; }
+.crm20-hide   {display: none;}
+.crm20-logout {float: right;margin-right: 20%;}
+.crm20-centro {}
+/** Ventas **/
+.color1 	{ background: #008EBA !important;} 	/* Pesos */
+.color2 	{ background: #008973 !important;}	/* Dolares */
+.mini-text  { font-size: 9px;}
+.burbuja  	{ padding: 15px;}
+.burbuja2  	{ padding: 4px;color: #FFF;margin-top: 10px;}
+.anchoLinea { line-height: 25px; list-style-type: none; margin-left: -45px;font-size: 10px;}
+#legendGraphic {margin-top: 20px;}
+#legendGraphic ul { margin-left:5px; padding: 0px; list-style-type: none;}
+#legendGraphic ul li { display: inline; color: white;}
+
+.bubble  	{ font-size: 14px; margin-top: 10px;height: 110px;padding: 10px;background: #CDE9FF;border: #007FC1 solid 4px;-webkit-border-radius: 10px;border-radius: 10px;color: #007FC1;}
