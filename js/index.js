@@ -283,7 +283,7 @@
         var li = $('<li/>');
 
         alert("se manda a vibrar");
-        navigator.notification.vibrate(100);
+        navigator.notification.vibrate(1000);
         console.log('inicia camara.............');
         navigator.camera.getPicture(onPhotoSuccess, onPhotoFail, { quality: 50 });
         console.log('termina camara.............');
