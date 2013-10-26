@@ -427,6 +427,7 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function (id) {
+alert("cambiara la pagina");
         window.location = "index2.html";
     }
 };
