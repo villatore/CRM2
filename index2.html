@@ -24,13 +24,13 @@
     </head>
     <body>
     <script>
-        $(function() {
+        $(function () {
             FastClick.attach(document.body);
+            var json = '{"login":"Correcto","userId":"0567","userName":"GABRIELA GUADALUPE GUEVARA SANCHEZ","userSex":"FEMENINO","userEmail":"gguevara@intelis.com","userUrlImage":null,"userAdmin":0} ';
             if (localStorage.getItem('user') === null) {
-                $('#intelisis').crm20();
-                var json = '{"login":"Correcto","userId":"0567","userName":"GABRIELA GUADALUPE GUEVARA SANCHEZ","userSex":"FEMENINO","userEmail":"gguevara@intelis.com","userUrlImage":null,"userAdmin":0} '
+                //$('#intelisis').crm20();
                 //localStorage.setItem('user') 
-                localStorage.setItem("user",JSON.stringify(json));
+                localStorage.setItem("user", JSON.stringify(json));
             } else {
                 $.mobile.changePage('#home');
             }
@@ -74,15 +74,15 @@
             <ul data-role="listview" data-divider-theme="a" data-inset="true">
                 <li data-role="list-divider" role="heading">Bienvenido</li>
                 <li>
-                    <a href="#payments" data-transition="slide">Comisiones</a>
+                    <a href="#payments" data-transition="slide">Tomar Código</a>
                     <span class="ui-li-count cantComisiones"></span>
                 </li>
                 <li>
-                    <a href="#sales" data-transition="slide">Ventas</a>
+                    <a href="#sales" data-transition="slide">Carrito de compras</a>
                     <span class="ui-li-count cantVentas"></span>
                 </li>
                 <li>
-                    <a href="#calendar" data-transition="slide">Calendario</a>
+                    <a href="#calendar" data-transition="slide">Compras Anteriores</a>
                 </li>
             </ul>           
 
@@ -123,13 +123,13 @@
             </p>
         </div>
     </div>
-    <!-- Comisiones -->
+    <!-- Tomar código -->
     <div data-role="page" id="payments" data-add-back-btn="true">
         <div data-theme="f" data-role="header">
-            <h1>Comisiones</h1>
+            <h1>Tomar código</h1>
             <div data-role="navbar">
                 <ul>
-                    <li><p class="center">Comisiones desde hace 60 días</p></li>
+                    <li><p class="center">código tomado</p></li>
                 </ul>
             </div>
         </div>    
