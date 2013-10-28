@@ -272,6 +272,7 @@
     function onPhotoSuccess(imageData) {
         var myImage = document.getElementById("myImage");
         myImage.style.display = "block";
+        alert("Imagen .. " + myImage.style.display);
         myImage.src = "data:image/jpeg;base64," + imageData;
     }
     function onPhotoFail(message) {
@@ -282,7 +283,7 @@
         var ul = $('<ul/>').addClass('listPayments'); ;
         var li = $('<li/>');
 
-        alert("se manda a vibrar");
+        alert("Vibrara");
         navigator.notification.vibrate(1000);
         console.log('inicia camara.............');
         navigator.camera.getPicture(onPhotoSuccess, onPhotoFail, { quality: 50 });
@@ -409,13 +410,6 @@
 var app = {
     // Application Constructor
     initialize: function () {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
@@ -423,11 +417,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function () {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function (id) {
-alert("cambiara la pagina");
+        alert("cambiara la pagina");
         window.location = "index2.html";
-    }
+    },
 };
