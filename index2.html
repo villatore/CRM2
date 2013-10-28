@@ -20,6 +20,7 @@
         <script src="js/socket.io.js"></script>
 
         <script src="js/index.js"></script>
+        <script src="js/lbl_es.js"></script>
     </head>
     <body>
     <script>
@@ -40,25 +41,23 @@
         <div data-theme="f" data-role="header">
             <h3>TT</h3>
         </div>
-        
         <div data-role="content">
-            
             <div id="intelisis"></div>
-
         </div>
 
         <div data-theme="f" data-role="footer" data-position="fixed">
-            <h3>Beta Version</h3>
+            <h3>Version 0.1</h3>
         </div>
     </div>
 
     <div data-role="page" id="home">
         <!-- Panel -->
         <div data-role="panel" id="mypanel" data-position="right" data-display="overlay" style="opacity:0.90;">
-            <h3>Ajustes</h3>
+            <h4><a id="version">Version 0.1</a></h4>
+            <h3><a id="ajustes">Ajustes</a></h3>
             <ul data-role="listview">
-                <li data-icon="false"><a href="#profile" data-rel="dialog" data-transition="flip">Perfil</a></li>
-                <li data-icon="false"><a href="#logout" data-rel="dialog" data-transition="flip">Salir</a></li>
+                <li data-icon="false"><a href="#profile" data-rel="dialog" data-transition="flip" id="per">Perfil</a></li>
+                <li data-icon="false"><a href="#logout" data-rel="dialog" data-transition="flip" id="sal">Salir</a></li>
                 <li data-icon="false"><a href="#home" data-rel="close">Cerrar este panel</a></li>
             </ul>
             <p id="geolocation">Buscando geolocation...</p>
@@ -199,6 +198,8 @@
             <p>En construcción, calendario...........</p>
         </div>
     </div>
-
+<script>
+    Textos();
+</script>
     </body>
 </html>
