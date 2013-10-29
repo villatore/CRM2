@@ -183,7 +183,6 @@ function crm20Exit() {
     //localStorage.clear();
     //$.mobile.changePage('#index');
     //location.reload();
-    alert ("Cerrara app");
     if(navigator.app){
             navigator.app.exitApp();
     }else if(navigator.device){

@@ -24,8 +24,10 @@
     </head>
     <body>
     <script>
-        $(function () {
+        $(function() {
             FastClick.attach(document.body);
+            $.mobile.changePage('#home');
+            return;
             //var json = '{"login":"Correcto","userId":"0567","userName":"GABRIELA GUADALUPE GUEVARA SANCHEZ","userSex":"FEMENINO","userEmail":"gguevara@intelis.com","userUrlImage":null,"userAdmin":0} ';
             if (localStorage.getItem('user') === null) {
                 $('#intelisis').crm20();
@@ -55,7 +57,7 @@
         <div data-role="panel" id="mypanel" data-position="right" data-display="overlay" style="opacity:0.90;">
             <h6><i><a id="version">Version 0.1</a></i></h6>
 			<strong>
-                <h4>::.. <a class="ui-title" id="ajustes">Ajustes</a> ..::</h4>
+                    <h4>::.. <a class="ui-title" id="ajustes">Ajustes</a> ..::</h4>
             </strong>
             <ul data-role="listview">
                 <li data-icon="false"><a href="#login" data-rel="dialog" data-transition="flip" id="A1">Login</a></li>
@@ -68,11 +70,13 @@
         </div>
         <!-- Fin Panel -->
         <div data-theme="f" data-role="header">
-            <h3>TT</h3>
+            <h3>Cart</h3>
              <a href="#mypanel" data-icon="gear" data-iconpos="notext" data-role="button" class="ui-btn-right">Open panel</a>
         </div>
         <div data-role="content">
-            <img src="img/cartnegro.jpg" class="crm20-centro">
+        <center>
+            <img src="img/cart_banner.jpg" class="crm20-centro">
+        </center>
             <br />
             <ul data-role="listview" data-divider-theme="a" data-inset="true">
                 <li data-role="list-divider" role="heading">Bienvenido</li>
@@ -136,14 +140,13 @@
     <div data-role="page" id="payments" data-add-back-btn="true">
         <div data-theme="f" data-role="header">
             <h1>Tomar código</h1>
-            <div data-role="navbar">
-                <ul>
-                    <li><p class="center">...</p></li>
-                </ul>
-            </div>
         </div>    
         <div data-role="content">
             <div id="typePayments"></div>
+            <label for="Usuario" class="user"><i class="icon-qrcode"> </i>código QR:</label>
+            <input type="text" maxlength="50" id="qrSKU" value='{"Sistema": "Intelisis","Contenido": "Solicitud","Referencia": "Intelisis.GET.TablaEvaluacion","SubReferencia": "Asignacion","Version": "1.0","Solicitud": {}}'/>
+            <label class="user"><i>{"Sistema": "Intelisis","Contenido": "Solicitud","Referencia": "Intelisis.GET.TablaEvaluacion","SubReferencia": "Asignacion","Version": "1.0","Solicitud": {}}</i></label>
+            <input type="submit" value="Consultar"></input>
         </div>
         <img style="display:none;width:60px;height:60px;" id="myImage" src="" />
     </div>

@@ -98,7 +98,9 @@
         var ventas = JSON.parse(localStorage.getItem('ventas'));
         var comisiones = JSON.parse(localStorage.getItem('comisiones'));
         var userFirstJson = JSON.parse(localStorage.getItem('userFirstJson'));
-        var cantVentas = (typeof ventas === 'string') ? 0 : ventas.length;
+        var cantVentas = 0;
+            if !(ventas === undefined)
+                cantVentas =(typeof ventas === 'string') ? 0 : ventas.length;
         var cantComisiones = (typeof comisiones === 'string') ? 0 : size_object(comisiones.PENDIENTE);
         $('.userName').html(user.userName);
         $('.userEmail').html(user.userEmail);
