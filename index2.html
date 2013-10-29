@@ -53,9 +53,12 @@
     <div data-role="page" id="home">
         <!-- Panel -->
         <div data-role="panel" id="mypanel" data-position="right" data-display="overlay" style="opacity:0.90;">
-            <h4><a id="version">Version 0.1</a></h4>
-            <h3><a id="ajustes">Ajustes</a></h3>
+            <h6><i><a id="version">Version 0.1</a></i></h6>
+			<strong>
+                <h4>::.. <a class="ui-title" id="ajustes">Ajustes</a> ..::</h4>
+            </strong>
             <ul data-role="listview">
+                <li data-icon="false"><a href="#login" data-rel="dialog" data-transition="flip" id="A1">Login</a></li>
                 <li data-icon="false"><a href="#profile" data-rel="dialog" data-transition="flip" id="per">Perfil</a></li>
                 <li data-icon="false"><a href="#logout" data-rel="dialog" data-transition="flip" id="sal">Salir</a></li>
                 <li data-icon="false"><a href="#home" data-rel="close">Cerrar este panel</a></li>
@@ -107,6 +110,12 @@
                 <div class="ui-block-a crm20-col-a">Genero</div>
                 <div class="ui-block-b crm20-col-b"><span class="userSex"></span></div>
             </div>
+        </div>
+    </div>
+    <!-- Login -->
+    <div data-role="page" id="login">
+        <div data-role="header">
+            <a href="javascript:crm20Exit();" data-role="button" data-theme="a" data-icon="check">Si</a>
         </div>
     </div>
     <!-- Salir -->

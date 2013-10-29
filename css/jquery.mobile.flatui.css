@@ -122,7 +122,7 @@
   content: "\e004"; }
 
 .ui-bar-a{border:1px solid #2c3e50;background:#2c3e50;color:#fff;font-weight:bold;font-family:Lato,sans-serif;}
-.ui-bar-a .ui-link-inherit{color:#3e3e3e}
+.ui-bar-a .ui-link-inherit{color:#39393e}
 .ui-bar-a a.ui-link{color:#7cc4e7;font-weight:bold;}
 .ui-bar-a a.ui-link:visited{color:#2489ce}
 .ui-bar-a a.ui-link:hover{color:#2489ce}

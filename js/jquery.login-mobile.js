@@ -7,10 +7,10 @@
     var defaults = {
         class: "crm20-login",
         cssForm: "crm20-form",
-        urlLogo: "img/logoWeb2.png",
+        urlLogo: "img/qrlogo.png",
         title1: "Bienvenido",
         title2: "a",
-        title3: "Intelisis CRM 2.0",
+        title3: "Cart",
         userName: "Usuario",
         passName: "Contraseña",
         inputUserName: "Usuario",
@@ -180,7 +180,13 @@ function crm20Login(json) {
     }
 }
 function crm20Exit() {
-    localStorage.clear();
-    $.mobile.changePage('#index');
-    location.reload();
+    //localStorage.clear();
+    //$.mobile.changePage('#index');
+    //location.reload();
+    alert ("Cerrara app");
+    if(navigator.app){
+            navigator.app.exitApp();
+    }else if(navigator.device){
+            navigator.device.exitApp();
+    }
 }
