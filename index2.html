@@ -26,9 +26,9 @@
     <script>
         $(function () {
             FastClick.attach(document.body);
-            var json = '{"login":"Correcto","userId":"0567","userName":"GABRIELA GUADALUPE GUEVARA SANCHEZ","userSex":"FEMENINO","userEmail":"gguevara@intelis.com","userUrlImage":null,"userAdmin":0} ';
+            //var json = '{"login":"Correcto","userId":"0567","userName":"GABRIELA GUADALUPE GUEVARA SANCHEZ","userSex":"FEMENINO","userEmail":"gguevara@intelis.com","userUrlImage":null,"userAdmin":0} ';
             if (localStorage.getItem('user') === null) {
-                //$('#intelisis').crm20();
+                $('#intelisis').crm20();
                 //localStorage.setItem('user') 
                 localStorage.setItem("user", JSON.stringify(json));
             } else {
