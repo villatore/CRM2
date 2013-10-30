@@ -1,0 +1,41 @@
+<html>
+<head>
+<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<!--script src="js/jquery-1.4.2.min.js" type="text/javascript"></script-->
+<script>
+function bodyload(){
+    alert("We are calling jquery's ajax function and on success callback xml parsing are done");
+//    dataTypeOrg: 'application/xml',
+    //    typeOrg: 'POST',
+    //cache: true,
+
+$.ajax({  
+    url:"http://www.edumobile.org/blog/uploads/XML-parsing-data/Data.xml",  
+    timeout:10000,
+    dataType: 'application/xml',
+    type: 'get',
+    success:function(data) {
+        $("#bookInFo").html("");
+         $("#bookInFo").append("<hr>");
+         $(data).find("Book").each(function () {
+              $("#bookInFo").append("<br> Name: " + $(this).find("name").text());
+              $("#bookInFo").append("<br> Address: " + $(this).find("address").text());
+              $("#bookInFo").append("<br> Country: " + $(this).find("country").text());
+              $("#bookInFo").append("<br><hr>");
+         });
+     },  
+    error:function(XMLHttpRequest,textStatus, errorThrown) {     
+      alert("Error status :"+textStatus);  
+      //alert("Error type :"+errorThrown);  
+      //alert("Error message :"+XMLHttpRequest.responseXML);
+      $( "#bookInFo" ).append( XMLHttpRequest.responseXML);
+    }
+    });
+}   
+</script>
+</head>
+<body onload="bodyload()">
+<button onclick="bodyload()">Ajax call</button>
+<p id="bookInFo"></p>
+</body>
+</html>
