@@ -99,13 +99,19 @@
         var comisiones = JSON.parse(localStorage.getItem('comisiones'));
         var userFirstJson = JSON.parse(localStorage.getItem('userFirstJson'));
         var cantVentas = 0;
-            if !(ventas === undefined)
+            if (ventas != undefined)
                 cantVentas =(typeof ventas === 'string') ? 0 : ventas.length;
-        var cantComisiones = (typeof comisiones === 'string') ? 0 : size_object(comisiones.PENDIENTE);
-        $('.userName').html(user.userName);
-        $('.userEmail').html(user.userEmail);
-        $('.userSex').html(user.userSex);
-        $('.userId').html(user.userId);
+        //var cantComisiones = (typeof comisiones === 'string') ? 0 : size_object(comisiones.PENDIENTE);
+        var cantComisiones = 0;
+            if (comisiones != undefined)
+                cantComisiones = (typeof comisiones === 'string') ? 0 : size_object(comisiones.PENDIENTE);
+        
+        if (user != undefined){
+            $('.userName').html(user.userName);
+            $('.userEmail').html(user.userEmail);
+            $('.userSex').html(user.userSex);
+            $('.userId').html(user.userId);
+        }
         $('.cantVentas').html(cantVentas);
         $('.cantComisiones').html(cantComisiones);
         // Testing sockets.io:
@@ -169,8 +175,7 @@
                     'data-transition': 'slide'
                 });
                 $('<span/>', { text: '$ ' + addCommas(v.importe),
-                    class: 'ui-li-count ' + moneda
-                }).appendTo(a);
+                    class: 'ui-li-count ' + moneda}).appendTo(a);
                 $('<li/>').html(a).appendTo(ul);
                 // Calculo para acumulado monedas (Para la gráfica de pie).
                 var importe = parseInt(v.importe)
@@ -286,7 +291,7 @@
         var li = $('<li/>');
 
         alert("Vibrara");
-        navigator.notification.vibrate(1000);
+        navigator.notification.vibrate(500);
         console.log('inicia camara.............');
         navigator.camera.getPicture(onPhotoSuccess, onPhotoFail, { quality: 50 });
         console.log('termina camara.............');
