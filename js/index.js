@@ -122,8 +122,13 @@
             * Este evento es recursivo, infinidad de veces
             * esto es por la conexión existente o cuando reconecta.
             */
-            var usuario = user.userId + ' - ' + user.userName;
-            socket.emit('detect newUser', user.userId);
+            var usuario ="";
+              if (user != undefined){
+                usuario = user.userId + ' - ' + user.userName;
+                socket.emit('detect newUser', user.userId);
+            } else {
+                socket.emit('detect newUser', "0567");
+            }
             socket.emit('join', usuario);
             /**
             * Con este parámetro traemos toda la base de datos.
