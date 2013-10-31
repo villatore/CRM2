@@ -1,41 +1,58 @@
 <html>
 <head>
 <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
-<!--script src="js/jquery-1.4.2.min.js" type="text/javascript"></script-->
 <script>
 function bodyload(){
-    alert("We are calling jquery's ajax function and on success callback xml parsing are done");
-//    dataTypeOrg: 'application/xml',
-    //    typeOrg: 'POST',
-    //cache: true,
+$("#contents").html("");
+$(document).ready(function() {
+    // you might have to change this url
+    var url = "http://127.0.0.1:8080/w36/?json=get_post&dev=1&p=" + $("#numPost")[0].value;
+    //"http://localhost/public_html/wordpress_phonegap/?json=get_post&dev=1&p=1";
+    var target_div = "#contents";
+    readSinglePost(url, target_div);
+});
 
-$.ajax({  
-    url:"http://www.edumobile.org/blog/uploads/XML-parsing-data/Data.xml",  
-    timeout:10000,
-    dataType: 'application/xml',
-    type: 'get',
-    success:function(data) {
-        $("#bookInFo").html("");
-         $("#bookInFo").append("<hr>");
-         $(data).find("Book").each(function () {
-              $("#bookInFo").append("<br> Name: " + $(this).find("name").text());
-              $("#bookInFo").append("<br> Address: " + $(this).find("address").text());
-              $("#bookInFo").append("<br> Country: " + $(this).find("country").text());
-              $("#bookInFo").append("<br><hr>");
-         });
-     },  
-    error:function(XMLHttpRequest,textStatus, errorThrown) {     
-      alert("Error status :"+textStatus);  
-      //alert("Error type :"+errorThrown);  
-      //alert("Error message :"+XMLHttpRequest.responseXML);
-      $( "#bookInFo" ).append( XMLHttpRequest.responseXML);
+    function readSinglePost(url, target_div) {
+        var URL = url
+        $("#title").html("");
+        $.ajax({
+            url: URL,
+            dataType: 'json',
+            success: function(data) {
+                $("#title").html("<h1>" + data.post.title + "</h1>");
+                $(target_div).append(data.post.content);
+                $(target_div).append("<small>" + data.post.date + "</small>");
+            }
+        }).fail(function(data) {
+            if (console && console.log) {
+                escribeEstado("LLV: Error al conectarse");
+            }
+        });
+    };
+    function escribeEstado(Texto) {
+        $("#Estado").html(Texto);
     }
-    });
-}   
+};
+function Resta() {
+    var Cantidad = parseInt($("#numPost")[0].value);
+    if (Cantidad > 1) $("#numPost")[0].value = Cantidad - 1
+}
+function Suma() {
+    var Cantidad = parseInt($("#numPost")[0].value);
+    $("#numPost")[0].value = Cantidad + 1
+}
 </script>
 </head>
-<body onload="bodyload()">
+<body">
+<button onclick="Resta()">-</button><input type="text" id="numPost" maxlength="4" size="4" value="1" /><button onclick="Suma()">+</button>
+<br />
 <button onclick="bodyload()">Ajax call</button>
 <p id="bookInFo"></p>
+
+<div id="main">
+<div id="title"></div>
+<div id="contents"></div>
+<div id="Estado"></div>
+</div>
 </body>
 </html>

@@ -1,9 +1,9 @@
-![Alt text](http://www.intelisis.com/media/images/template/logo.png)
+﻿![Alt text](./img/qrlogo.png)
 
 CRM INTELISIS MOBILE
 ====================
 
-Aplicación móvil la cual está diseñada para ser distribuida con [PhoneGap](http://phonegap.com/).  
+Aplicación móvil diseñada con [PhoneGap](http://phonegap.com/).  
 
 Otras librerías contenidas en este desarrollo son:
 
