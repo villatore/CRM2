@@ -1,6 +1,6 @@
 ﻿![Alt text](./img/qrlogo.png)
 
-CRM INTELISIS MOBILE
+TCart - Tu carrito de compras
 ====================
 
 Aplicación móvil diseñada con [PhoneGap](http://phonegap.com/).  

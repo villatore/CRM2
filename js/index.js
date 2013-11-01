@@ -15,12 +15,9 @@
     }
     function onOnLine() {
         console.log('On Line');
-        // TODO verificar si hay datos
-        // Contar la cantidad de comisiones 
-
-        // Si es diferente, cargarlas nuevamente a localstorage
     }
     function onOffLine() {
+        alert('Off Line');
         console.log('Off Line');
     }
     function onBatteryCritical() {
@@ -89,7 +86,6 @@
     $(document).on("pagebeforechange", function () { });
 
     $(document).on("mobileinit", function () {
-        //$.mobile.button.prototype.options.mini = true;
         bindEvents();
     });
     // Interface
@@ -407,6 +403,17 @@
         });
     });
     $(document).on("pageinit", "#paymentsDetails", function () {
+        $('.detailPayments').listview({
+            countTheme: "b",
+            dividerTheme: "a",
+            filter: true,
+            icon: "arrow-r",
+            filterPlaceholder: "Buscar...",
+            autodividers: false
+        });
+        $('.detailPayments').listview('refresh');
+    });
+    $(document).on("pageinit", "#pruebaws", function () {
         $('.detailPayments').listview({
             countTheme: "b",
             dividerTheme: "a",

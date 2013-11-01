@@ -28,8 +28,16 @@ function Textos() {
 }
 function Etiqueta(key) {
     var lenguaje = "en-US"; //idioma por default
+    var i = 0;
     if (l8n[window.navigator.language])
         lenguaje = window.navigator.language;
+
+    /*Probar esto
+    for (i = 0; size_object(l8n[lenguaje]); i++) {
+    var key = l8n[lenguaje][i];
+    document.querySelector(key).textContent = l8n[lenguaje][key];
+    }*/
+    
     if (window.navigator && l8n[lenguaje]) {
         document.querySelector(key).textContent = l8n[lenguaje][key];
     }

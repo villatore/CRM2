@@ -36,11 +36,50 @@
                 $.mobile.changePage('#home');
             }
         });
+        function Muestra(){
+            $.mobile.changePage('#paymentsDetails');
+            $("#contents").html("");
+            //$(document).ready(function() {
+                // you might have to change this url
+                //var url = "http://127.0.0.1:8080/w36/?json=get_post&dev=1&p=" + $("#numPost")[0].value;
+                var url = $("#qrSKU")[0].value;
+                var target_div = "#contents";
+                readSinglePost(url, target_div);
+            //});
+
+            function readSinglePost(url, target_div) {
+                var URL = url
+                $("#title").html("");
+                escribeEstado("Consultando .... ");
+                $.ajax({
+                    url: URL,
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.status != "error") {
+                            $("#title").html(data.post.title);
+                            $(target_div).append(data.post.content);
+                            $(target_div).append("<small>" + data.post.date + "</small>");
+                            escribeEstado("");
+                        } else
+                            $("#title").html("Está información no fue encontrada, consulte a su asesor...");
+                        escribeEstado("");
+                    } //fin sucess
+                }).fail(function(data) {
+                    if (console && console.log) {
+                        escribeEstado("Error al conectarse al servidor");
+                    }
+                });
+            };
+            function escribeEstado(Texto) {
+                $("#Estado").html(Texto);
+            }
+        };
+</script>
     </script>
 
     <div data-role="page" id="index">
         <div data-theme="f" data-role="header">
-            <h3>TT</h3>
+            <h3>TCart</h3>
         </div>
         <div data-role="content">
             <div id="intelisis"></div>
@@ -91,7 +130,6 @@
                     <a href="#calendar" data-transition="slide">Compras Anteriores</a>
                 </li>
             </ul>           
-<a href="pruebaws.html">prueba de ws</a>
         </div>
     </div>
     <!-- Perfil -->
@@ -142,9 +180,9 @@
         <div data-role="content">
             <div id="typePayments"></div>
             <label class="user"><i class="icon-qrcode"> </i>código QR:</label>
-            <input type="text" maxlength="50" id="qrSKU" value='{"Sistema": "Intelisis","Contenido": "Solicitud","Referencia": "Intelisis.GET.TablaEvaluacion","SubReferencia": "Asignacion","Version": "1.0","Solicitud": {}}'/>
-            <label class="user"><i>{"Sistema": "Intelisis","Contenido": "Solicitud","Referencia": "Intelisis.GET.TablaEvaluacion","SubReferencia": "Asignacion","Version": "1.0","Solicitud": {}}</i></label>
-            <input type="submit" value="Consultar"></input>
+            <input type="text" maxlength="50" id="qrSKU" value='http://127.0.0.1:8080/w36/?json=get_post&dev=1&p=4'/>
+            <label class="user"><i>http://127.0.0.1:8080/w36/?json=get_post&dev=1&p=4</i></label>
+            <input type="button" value="Consultar" onclick="Muestra()"></input>
         </div>
         <img style="display:none;width:60px;height:60px;" id="myImage" src="" />
     </div>
@@ -156,6 +194,11 @@
         </div>    
         <div data-role="content">
             <div id="paymentsDetail"></div>
+<div id="main">
+<h1><div id="title"></div></h1>
+<div id="contents"></div>
+<div id="Estado"></div>
+</div>
         </div>
     </div>
 
@@ -206,6 +249,15 @@
         </div>
         <div data-role="content">
             <p>En construcción, calendario...........</p>
+        </div>
+    </div>
+    <!-- Web Service -->
+    <div data-role="page" id="pruebaws" data-add-back-btn="true">
+        <div data-theme="f" data-role="header">
+            <h1>Ejemplo Web Services</h1>
+        </div>
+        <div data-role="content">
+            <p>En construcción, ws...........</p>
         </div>
     </div>
 <script>

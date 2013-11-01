@@ -7,7 +7,6 @@ $("#contents").html("");
 $(document).ready(function() {
     // you might have to change this url
     var url = "http://127.0.0.1:8080/w36/?json=get_post&dev=1&p=" + $("#numPost")[0].value;
-    //"http://localhost/public_html/wordpress_phonegap/?json=get_post&dev=1&p=1";
     var target_div = "#contents";
     readSinglePost(url, target_div);
 });
@@ -15,17 +14,23 @@ $(document).ready(function() {
     function readSinglePost(url, target_div) {
         var URL = url
         $("#title").html("");
+        escribeEstado("Consultando .... ");
         $.ajax({
             url: URL,
             dataType: 'json',
             success: function(data) {
-                $("#title").html("<h1>" + data.post.title + "</h1>");
-                $(target_div).append(data.post.content);
-                $(target_div).append("<small>" + data.post.date + "</small>");
-            }
+                if (data.status != "error") {
+                    $("#title").html(data.post.title);
+                    $(target_div).append(data.post.content);
+                    $(target_div).append("<small>" + data.post.date + "</small>");
+                    escribeEstado("");
+                }else
+                    $("#title").html("Está información no fue encontrada, consulte a su asesor...");
+                    escribeEstado("");
+            }//fin sucess
         }).fail(function(data) {
             if (console && console.log) {
-                escribeEstado("LLV: Error al conectarse");
+                escribeEstado("Error al conectarse al servidor");
             }
         });
     };
@@ -48,9 +53,8 @@ function Suma() {
 <br />
 <button onclick="bodyload()">Ajax call</button>
 <p id="bookInFo"></p>
-
 <div id="main">
-<div id="title"></div>
+<h1><div id="title"></div></h1>
 <div id="contents"></div>
 <div id="Estado"></div>
 </div>
