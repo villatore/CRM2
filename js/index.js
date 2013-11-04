@@ -291,7 +291,6 @@
         var ul = $('<ul/>').addClass('listPayments'); ;
         var li = $('<li/>');
 
-        alert("Vibrara");
         navigator.notification.vibrate(500);
         console.log('inicia camara.............');
         navigator.camera.getPicture(onPhotoSuccess, onPhotoFail, { quality: 50 });
@@ -427,56 +426,63 @@
 })(jQuery);
 
 function GEOL(){
-navigator.geolocation.getCurrentPosition(onSuccessGeo, onErrorGeo);
+    navigator.geolocation.getCurrentPosition(onSuccessGeo, onErrorGeo);
 }
 // Run after successful transaction
 // Let's display the position data
 function onSuccessGeo(position) {
-var geoElement = document.getElementById('geolocationData');
-geoElement.innerHTML =
-'Latitude: ' + position.coords.latitude + '<br />' +
-'Longitude: ' + position.coords.longitude + '<br />' +
-'Altitude: ' + position.coords.altitude + '<br />' +
-'Accuracy: ' + position.coords.accuracy + '<br />' +
-'Altitude Accuracy: ' +
-position.coords.altitudeAccuracy + '<br />' +
-'Heading: ' + position.coords.heading + '<br />' +
-'Speed: ' + position.coords.speed + '<br />' +
-'Timestamp: ' + position.timestamp + '<br />';
+    var geoElement = document.getElementById('geolocationData');
+    geoElement.innerHTML =
+    'Latitude: ' + position.coords.latitude + '<br />' +
+    'Longitude: ' + position.coords.longitude + '<br />' +
+    'Altitude: ' + position.coords.altitude + '<br />' +
+    'Accuracy: ' + position.coords.accuracy + '<br />' +
+    'Altitude Accuracy: ' +
+    position.coords.altitudeAccuracy + '<br />' +
+    'Heading: ' + position.coords.heading + '<br />' +
+    'Speed: ' + position.coords.speed + '<br />' +
+    'Timestamp: ' + position.timestamp + '<br />';
 }
 // Run if we face an error
 // obtaining the position data
 function onErrorGeo(error) {
-var errString = '';
-// Check to see if we have received an error code
-if(error.code) {
-// If we have, handle it by case
-switch(error.code){
-case 1: // PERMISSION_DENIED
-errString =
-'Unable to obtain the location information ' +
-'because the device does not have permission '+
-'to the use that service.';
-break;
-case 2: // POSITION_UNAVAILABLE
-errString =
-'Unable to obtain the location information ' +
-'because the device location could not ' +
-'be determined.';
-break;
-case 3: // TIMEOUT
-errString =
-'Unable to obtain the location within the ' +
-'specified time allocation.';
-break;
-default: // UNKOWN_ERROR
-errString =
-'Unable to obtain the location of the ' +
-'device due to an unknown error.';
-break;
+    var errString = '';
+    // Check to see if we have received an error code
+    if(error.code) {
+        // If we have, handle it by case
+        switch(error.code){
+            case 1: // PERMISSION_DENIED
+            errString =
+                'Unable to obtain the location information ' +
+                'because the device does not have permission '+
+                'to the use that service.';
+            break;
+            case 2: // POSITION_UNAVAILABLE
+            errString =
+                'Unable to obtain the location information ' +
+                'because the device location could not ' +
+                'be determined.';
+            break;
+            case 3: // TIMEOUT
+            errString =
+                'Unable to obtain the location within the ' +
+                'specified time allocation.';
+            break;
+            default: // UNKOWN_ERROR
+            errString =
+                'Unable to obtain the location of the ' +
+                'device due to an unknown error.';
+            break;
+        }//case
+    }//if
+    // Handle any errors we may face
+    document.getElementById('geolocationData').innerHTML = errString;
+}//fin
+function Resta() {
+    var Cantidad = parseInt($("#numPost")[0].value);
+    if (Cantidad > 1) $("#numPost")[0].value = Cantidad - 1
 }
-}
-// Handle any errors we may face
-var element = document.getElementById('geolocationData');
-element.innerHTML = errString;
+function Suma() {
+    var Cantidad = parseInt($("#numPost")[0].value);
+    $("#numPost")[0].value = Cantidad + 1
 }

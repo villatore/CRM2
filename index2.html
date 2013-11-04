@@ -40,16 +40,11 @@
         function Muestra(){
             $.mobile.changePage('#paymentsDetails');
             $("#contents").html("");
-            //$(document).ready(function() {
-                // you might have to change this url
-                //var url = "http://127.0.0.1:8080/w36/?json=get_post&dev=1&p=" + $("#numPost")[0].value;
-                var url = $("#qrSKU")[0].value;
-                var target_div = "#contents";
-                readSinglePost(url, target_div);
-            //});
+            var url = $("#qrSKU")[0].value;
+            var target_div = "#contents";
+            readSinglePost(url, target_div);
 
-            function readSinglePost(url, target_div) {
-                var URL = url
+            function readSinglePost(URL, target_div) {
                 $("#title").html("");
                 escribeEstado("Consultando .... ");
                 $.ajax({
@@ -101,8 +96,7 @@
                 <li data-icon="false"><a href="#home" data-rel="close">Cerrar este panel</a></li>
             </ul>
             <div id="geolocationData">Buscando geolocation...</div>
-        </div>
-        <!-- Fin Panel -->
+        </div><!-- Fin Panel -->
         <!--header-->
         <div data-theme="f" data-role="header">
             <h3>Cart</h3>
@@ -129,9 +123,10 @@
                 </li>
             </ul>           
         </div><!--Fin content-->
+        <!-- Footer -->
         <div data-theme="f" data-role="footer" data-position="fixed">
             <h3>Version 0.1</h3>
-        </div>
+        </div><!-- Fin Footer -->
 
     </div>
     <!-- Perfil -->
@@ -153,7 +148,7 @@
                 <div class="ui-block-b crm20-col-b"><span class="userSex"></span></div>
             </div>
         </div>
-    </div>
+    </div><!-- Fin Perfil -->
     <!-- Login -->
     <div data-role="page" id="login">
         <div data-role="header">
@@ -173,7 +168,7 @@
                 </div>
             </p>
         </div>
-    </div>
+    </div><!-- Fin Salir -->
     <!-- Tomar código -->
     <div data-role="page" id="payments" data-add-back-btn="true">
         <div data-theme="f" data-role="header">
@@ -189,20 +184,35 @@
         <img style="display:none;width:60px;height:60px;" id="myImage" src="" />
     </div>
 
+    <!-- paymentsDetails -->
     <div data-role="page" id="paymentsDetails" data-add-back-btn="true">
+        <!-- Header -->
         <div data-theme="f" data-role="header">
             <h1>Comisiones <span class="paymentsTitle"></span></h1>
             <a href="#" class="ui-btn-right paymentsQuantity">N/A</a>
-        </div>    
+        </div> <!-- Fin header -->   
+        <!-- Content -->
         <div data-role="content">
             <div id="paymentsDetail"></div>
+            <div data-role="controlgroup" data-type="horizontal" data-theme="a">
+            <table>
+            <tr><td><button onclick="Resta()" data-role="button">-</button></td>
+            <td><input type="text" id="numPost" maxlength="4" size="4" value="1" data-role="input"/></td>
+            <td><button onclick="Suma()" data-role="button">+</button></td></tr>
+            </table>
+                <br />
+            </div>
 <div id="main">
 <h1><div id="title"></div></h1>
 <div id="contents"></div>
 <div id="Estado"></div>
 </div>
-        </div>
-    </div>
+        </div><!-- Fin content -->
+        <!-- Footer -->
+        <div data-theme="f" data-role="footer" data-position="fixed">
+            <h3>Version 0.1 cod</h3>
+        </div><!-- Fin Footer -->
+    </div><!-- fin paymentsDetails -->
 
     <div data-role="page" id="proyectDetails" data-add-back-btn="true">
         <div data-theme="f" data-role="header">
