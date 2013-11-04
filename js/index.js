@@ -94,7 +94,7 @@
         var ventas = JSON.parse(localStorage.getItem('ventas'));
         var comisiones = JSON.parse(localStorage.getItem('comisiones'));
         var userFirstJson = JSON.parse(localStorage.getItem('userFirstJson'));
-        var cantVentas = 0;
+        var cantVentas = 10;
             if (ventas != undefined)
                 cantVentas =(typeof ventas === 'string') ? 0 : ventas.length;
         //var cantComisiones = (typeof comisiones === 'string') ? 0 : size_object(comisiones.PENDIENTE);
@@ -162,7 +162,7 @@
             div = $('#detailsSales');
         // 2360 -> string 
         // 0567 -> object
-        if (typeof (ventas) === 'object') {
+        if ((ventas != null) && (typeof (ventas) === 'object')) {
             var ul = $('<ul/>').addClass('listSales');
             var li = $('<li/>');
             var total = 0, totalPesos = 0, totalDolares = 0;
@@ -425,3 +425,58 @@
         $('.detailPayments').listview('refresh');
     });
 })(jQuery);
+
+function GEOL(){
+navigator.geolocation.getCurrentPosition(onSuccessGeo, onErrorGeo);
+}
+// Run after successful transaction
+// Let's display the position data
+function onSuccessGeo(position) {
+var geoElement = document.getElementById('geolocationData');
+geoElement.innerHTML =
+'Latitude: ' + position.coords.latitude + '<br />' +
+'Longitude: ' + position.coords.longitude + '<br />' +
+'Altitude: ' + position.coords.altitude + '<br />' +
+'Accuracy: ' + position.coords.accuracy + '<br />' +
+'Altitude Accuracy: ' +
+position.coords.altitudeAccuracy + '<br />' +
+'Heading: ' + position.coords.heading + '<br />' +
+'Speed: ' + position.coords.speed + '<br />' +
+'Timestamp: ' + position.timestamp + '<br />';
+}
+// Run if we face an error
+// obtaining the position data
+function onErrorGeo(error) {
+var errString = '';
+// Check to see if we have received an error code
+if(error.code) {
+// If we have, handle it by case
+switch(error.code){
+case 1: // PERMISSION_DENIED
+errString =
+'Unable to obtain the location information ' +
+'because the device does not have permission '+
+'to the use that service.';
+break;
+case 2: // POSITION_UNAVAILABLE
+errString =
+'Unable to obtain the location information ' +
+'because the device location could not ' +
+'be determined.';
+break;
+case 3: // TIMEOUT
+errString =
+'Unable to obtain the location within the ' +
+'specified time allocation.';
+break;
+default: // UNKOWN_ERROR
+errString =
+'Unable to obtain the location of the ' +
+'device due to an unknown error.';
+break;
+}
+}
+// Handle any errors we may face
+var element = document.getElementById('geolocationData');
+element.innerHTML = errString;
+}

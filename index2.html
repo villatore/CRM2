@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=yes, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+        <meta name="viewport" content="initial-scale=1, user-scalable=yes, maximum-scale=3, minimum-scale=1, width=device-width, height=device-height">
         <title>Scanner</title>
         
         <link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -26,6 +26,7 @@
         $(function() {
             FastClick.attach(document.body);
             $.mobile.changePage('#home');
+            GEOL();
             return;
             //var json = '{"login":"Correcto","userId":"0567","userName":"GABRIELA GUADALUPE GUEVARA SANCHEZ","userSex":"FEMENINO","userEmail":"gguevara@intelis.com","userUrlImage":null,"userAdmin":0} ';
             if (localStorage.getItem('user') === null) {
@@ -82,11 +83,7 @@
             <h3>TCart</h3>
         </div>
         <div data-role="content">
-            <div id="intelisis"></div>
-        </div>
-
-        <div data-theme="f" data-role="footer" data-position="fixed">
-            <h3>Version 0.1</h3>
+            <div id="Toruz"></div>
         </div>
     </div>
 
@@ -103,14 +100,15 @@
                 <li data-icon="false"><a href="#logout" data-rel="dialog" data-transition="flip" id="sal">Salir</a></li>
                 <li data-icon="false"><a href="#home" data-rel="close">Cerrar este panel</a></li>
             </ul>
-            <p id="geolocation">Buscando geolocation...</p>
-            <input type="button" class="socketIO" value="Test socketIO test msg">
+            <div id="geolocationData">Buscando geolocation...</div>
         </div>
         <!-- Fin Panel -->
+        <!--header-->
         <div data-theme="f" data-role="header">
             <h3>Cart</h3>
              <a href="#mypanel" data-icon="gear" data-iconpos="notext" data-role="button" class="ui-btn-right">Open panel</a>
-        </div>
+        </div><!--Fin header-->
+        <!--content-->
         <div data-role="content">
         <center>
             <img src="img/cart_banner.jpg" class="crm20-centro">
@@ -130,7 +128,11 @@
                     <a href="#calendar" data-transition="slide">Compras Anteriores</a>
                 </li>
             </ul>           
+        </div><!--Fin content-->
+        <div data-theme="f" data-role="footer" data-position="fixed">
+            <h3>Version 0.1</h3>
         </div>
+
     </div>
     <!-- Perfil -->
     <div data-role="page" id="profile">
@@ -249,15 +251,6 @@
         </div>
         <div data-role="content">
             <p>En construcción, calendario...........</p>
-        </div>
-    </div>
-    <!-- Web Service -->
-    <div data-role="page" id="pruebaws" data-add-back-btn="true">
-        <div data-theme="f" data-role="header">
-            <h1>Ejemplo Web Services</h1>
-        </div>
-        <div data-role="content">
-            <p>En construcción, ws...........</p>
         </div>
     </div>
 <script>
