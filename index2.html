@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="initial-scale=1, user-scalable=yes, maximum-scale=3, minimum-scale=1, width=device-width, height=device-height">
-        <title>Scanner</title>
+        <title>Cart</title>
         
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
@@ -37,43 +37,10 @@
                 $.mobile.changePage('#home');
             }
         });
-        function Muestra(){
-            $.mobile.changePage('#paymentsDetails');
-            $("#contents").html("");
-            var url = $("#qrSKU")[0].value;
-            var target_div = "#contents";
-            readSinglePost(url, target_div);
-
-            function readSinglePost(URL, target_div) {
-                $("#title").html("");
-                escribeEstado("Consultando .... ");
-                $.ajax({
-                    url: URL,
-                    dataType: 'json',
-                    success: function(data) {
-                        if (data.status != "error") {
-                            $("#title").html(data.post.title);
-                            $(target_div).append(data.post.content);
-                            $(target_div).append("<small>" + data.post.date + "</small>");
-                            escribeEstado("");
-                        } else
-                            $("#title").html("Está información no fue encontrada, consulte a su asesor...");
-                        escribeEstado("");
-                    } //fin sucess
-                }).fail(function(data) {
-                    if (console && console.log) {
-                        escribeEstado("Error al conectarse al servidor");
-                    }
-                });
-            };
-            function escribeEstado(Texto) {
-                $("#Estado").html(Texto);
-            }
-        };
 </script>
     </script>
 
-    <div data-role="page" id="index">
+    <div data-role="page" id="i2ndex">
         <div data-theme="f" data-role="header">
             <h3>TCart</h3>
         </div>
@@ -176,9 +143,9 @@
         </div>    
         <div data-role="content">
             <div id="typePayments"></div>
-            <label class="user"><i class="icon-qrcode"> </i>código QR:</label>
+            <label><i class="icon-qrcode"> </i>código QR:</label>
             <input type="text" maxlength="70" length="50" id="qrSKU" value='http://172.16.1.129:8080/w36/?json=get_post&dev=1&p=4'/>
-            <label class="user"><i>http://127.0.0.1:8080/w36/?json=get_post&dev=1&p=4</i></label>
+            <label><i>http://127.0.0.1:8080/w36/?json=get_post&dev=1&p=4</i></label>
             <input type="button" value="Consultar" onclick="Muestra()"></input>
         </div>
         <img style="display:none;width:60px;height:60px;" id="myImage" src="" />
@@ -195,11 +162,19 @@
         <div data-role="content">
             <div id="paymentsDetail"></div>
             <div data-role="controlgroup" data-type="horizontal" data-theme="a">
-            <table>
-            <tr><td><button onclick="Resta()" data-role="button">-</button></td>
-            <td><input type="text" id="numPost" maxlength="4" size="4" value="1" data-role="input"/></td>
-            <td><button onclick="Suma()" data-role="button">+</button></td></tr>
-            </table>
+            <center>
+                <table width=55%>
+                <tr><td><button onclick="Resta()" data-role="button">-</button></td>
+                <td><a id="cantidad" data-role="input">1</a>&nbsp;<a id="unidad" data-role="input"></a></td>
+                <td><button onclick="Suma()" data-role="button">+</button></td>
+                <td> Precio: $<a id="precio" data-role="input"/>0</td>
+                <td> Total: $<a id="total" data-role="input"/>0</td>
+                <td width=35%><img src="img/cartmas.jpg" height="40%" width="40%" /> </td>
+                <td width=35%><img src="img/back.png" height="25%" width="25%" onclick="$.mobile.changePage('#payments')" /> </td>
+                <td width=35%><img src="img/home2.jpg" height="25%" width="25%" onclick="$.mobile.changePage('#home')" /> </td>
+                </tr>
+                </table>
+            </center>
                 <br />
             </div>
 <div id="main">

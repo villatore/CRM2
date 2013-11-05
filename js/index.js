@@ -5,7 +5,6 @@
         document.addEventListener('resume', onResume, false);
         document.addEventListener('online', onOnLine, false);
         document.addEventListener('offline', onOffLine, false);
-        //navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
     function onPause() {
         console.log('Pause');
@@ -28,21 +27,6 @@
     }
     function onBatteryStatus(info) {
         console.log('Estatus bateria ' + info.level + '%');
-    }
-    function onSuccess(position) {
-        var element = $('#geolocation');
-        element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />' +
-                            'Longitude: ' + position.coords.longitude + '<br />' +
-                            'Altitude: ' + position.coords.altitude + '<br />' +
-                            'Accuracy: ' + position.coords.accuracy + '<br />' +
-                            'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '<br />' +
-                            'Heading: ' + position.coords.heading + '<br />' +
-                            'Speed: ' + position.coords.speed + '<br />' +
-                            'Timestamp: ' + position.timestamp + '<br />';
-    }
-    function onError(error) {
-        alert('code: ' + error.code + '\n' +
-              'message: ' + error.message + '\n');
     }
     function getDeviceInfo() {
         console.log('Nombre dispositivo: ' + device.name);
@@ -437,10 +421,8 @@ function onSuccessGeo(position) {
     'Longitude: ' + position.coords.longitude + '<br />' +
     'Altitude: ' + position.coords.altitude + '<br />' +
     'Accuracy: ' + position.coords.accuracy + '<br />' +
-    'Altitude Accuracy: ' +
-    position.coords.altitudeAccuracy + '<br />' +
+    'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '<br />' +
     'Heading: ' + position.coords.heading + '<br />' +
-    'Speed: ' + position.coords.speed + '<br />' +
     'Timestamp: ' + position.timestamp + '<br />';
 }
 // Run if we face an error
@@ -479,10 +461,63 @@ function onErrorGeo(error) {
     document.getElementById('geolocationData').innerHTML = errString;
 }//fin
 function Resta() {
-    var Cantidad = parseInt($("#numPost")[0].value);
-    if (Cantidad > 1) $("#numPost")[0].value = Cantidad - 1
+    var Cantidad = parseInt($("#cantidad")[0].innerHTML);
+    if (Cantidad > 1) $("#cantidad")[0].innerHTML = Cantidad - 1
+    $("#total")[0].innerHTML = parseInt($("#cantidad")[0].innerHTML) * parseInt($("#precio")[0].innerHTML);
 }
 function Suma() {
-    var Cantidad = parseInt($("#numPost")[0].value);
-    $("#numPost")[0].value = Cantidad + 1
+    var Cantidad = parseInt($("#cantidad")[0].innerHTML);
+    $("#cantidad")[0].innerHTML = Cantidad + 1;
+    $("#total")[0].innerHTML = parseInt($("#cantidad")[0].innerHTML) * parseInt($("#precio")[0].innerHTML);
 }
+function LimpiaProducto() {
+        $("#cantidad")[0].innerHTML = 0;
+        $("#precio").html(0);
+        $("#unidad").html("");
+        Resta();
+}
+        function Muestra(){
+            $.mobile.changePage('#paymentsDetails');
+            $("#contents").html("");
+            var url = $("#qrSKU")[0].value;
+            var target_div = "#contents";
+            readSinglePost(url, target_div);
+
+            function readSinglePost(URL, target_div) {
+                $("#title").html("");
+                escribeEstado("Consultando .... ");
+                $("#cantidad")[0].innerHTML = 1;
+                Resta();
+                $.ajax({
+                    url: URL,
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.status != "error") {
+                            $("#title").html(data.post.title);
+                            $(target_div).append(data.post.content);
+                            $(target_div).append("<small>" + data.post.date + "</small>");
+                            $("#precio").html(data.post.id);
+                            $("#unidad").html(data.post.comment_status);
+                            console.log(data.post);
+                            Resta();
+                            escribeEstado("");
+                            ExisteProducto=true;
+                        } else {
+                            LimpiaProducto();
+                            $("#title").html("<a style='color:#FF0000'>Está información no fue encontrada, consulte a su asesor...</a>");
+                            ExisteProducto=false;
+                        }
+                        escribeEstado("");
+                    } //fin sucess
+                }).fail(function(data) {
+                    ExisteProducto=false;
+                    if (console && console.log) {
+                        escribeEstado("Error al conectarse al servidor");
+                    }
+                });
+            };
+            function escribeEstado(Texto) {
+                $("#Estado").html(Texto);
+            }
+        };
+var ExisteProducto = false;
