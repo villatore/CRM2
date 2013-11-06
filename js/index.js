@@ -475,49 +475,71 @@ function LimpiaProducto() {
         $("#precio").html(0);
         $("#unidad").html("");
         Resta();
+        Producto = null;
 }
-        function Muestra(){
-            $.mobile.changePage('#paymentsDetails');
-            $("#contents").html("");
-            var url = $("#qrSKU")[0].value;
-            var target_div = "#contents";
-            readSinglePost(url, target_div);
+function Muestra(){
+    $.mobile.changePage('#paymentsDetails');
+    $("#contents").html("");
+    var url = $("#qrSKU")[0].value;
+    var target_div = "#contents";
+    readSinglePost(url, target_div);
 
-            function readSinglePost(URL, target_div) {
-                $("#title").html("");
-                escribeEstado("Consultando .... ");
-                $("#cantidad")[0].innerHTML = 1;
-                Resta();
-                $.ajax({
-                    url: URL,
-                    dataType: 'json',
-                    success: function(data) {
-                        if (data.status != "error") {
-                            $("#title").html(data.post.title);
-                            $(target_div).append(data.post.content);
-                            $(target_div).append("<small>" + data.post.date + "</small>");
-                            $("#precio").html(data.post.id);
-                            $("#unidad").html(data.post.comment_status);
-                            console.log(data.post);
-                            Resta();
-                            escribeEstado("");
-                            ExisteProducto=true;
-                        } else {
-                            LimpiaProducto();
-                            $("#title").html("<a style='color:#FF0000'>Está información no fue encontrada, consulte a su asesor...</a>");
-                            ExisteProducto=false;
-                        }
-                        escribeEstado("");
-                    } //fin sucess
-                }).fail(function(data) {
-                    ExisteProducto=false;
-                    if (console && console.log) {
-                        escribeEstado("Error al conectarse al servidor");
-                    }
-                });
-            };
-            function escribeEstado(Texto) {
-                $("#Estado").html(Texto);
+    function readSinglePost(URL, target_div) {
+        $("#title").html("");
+        escribeEstado("Consultando .... ");
+        $("#cantidad")[0].innerHTML = 1;
+        Resta();
+        $.ajax({
+            url: URL,
+            dataType: 'jsonp',
+            success: function (data) {
+                if (data.status != "error") {
+                    $("#title").html(data.post.title);
+                    $(target_div).append(data.post.content);
+                    $(target_div).append("<small>" + data.post.date + "</small>");
+                    $("#precio").html(data.post.id);
+                    $("#unidad").html(data.post.comment_status);
+                    console.log(data.post);
+                    Resta();
+                    escribeEstado("");
+                    ExisteProducto = true;
+                    Producto = data;
+                } else {
+                    LimpiaProducto();
+                    $("#title").html("<a style='color:#FF0000'>Está información no fue encontrada, consulte a su asesor...</a>");
+                    ExisteProducto = false;
+                }
+                escribeEstado("");
+            } //fin sucess
+        }).fail(function (data) {
+            ExisteProducto = false;
+            if (console && console.log) {
+                escribeEstado("Error al conectarse al servidor");
             }
-        };
+        });
+    };
+    function escribeEstado(Texto) {
+        $("#Estado").html(Texto);
+    }
+};
+
+function AgregaCarro() {
+    window.localStorage.setItem("Producto", Producto.post.url);
+    return;
+        var jsonUser = {  id: json.userId,
+                            user: json,
+                            ventas: json.ventas,
+                            comisiones: json.comisiones
+                        };
+        delete jsonUser.user['ventas'];
+        delete jsonUser.user['comisiones'];
+        window.localStorage.setItem("userFirstJson",JSON.stringify(jsonUser)); // para MongoDB
+        window.localStorage.setItem("uuid",device.uuid);
+        window.localStorage.setItem("ventas",JSON.stringify(jsonUser.ventas));
+        window.localStorage.setItem("comisiones",JSON.stringify(jsonUser.comisiones));
+        delete json['ventas'];
+        delete json['comisiones'];
+        window.localStorage.setItem("user",JSON.stringify(json));
+};
 var ExisteProducto = false;
+var Producto;

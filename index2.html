@@ -163,15 +163,15 @@
             <div id="paymentsDetail"></div>
             <div data-role="controlgroup" data-type="horizontal" data-theme="a">
             <center>
-                <table width=55%>
+                <table width="55%">
                 <tr><td><button onclick="Resta()" data-role="button">-</button></td>
                 <td><a id="cantidad" data-role="input">1</a>&nbsp;<a id="unidad" data-role="input"></a></td>
                 <td><button onclick="Suma()" data-role="button">+</button></td>
                 <td> Precio: $<a id="precio" data-role="input"/>0</td>
                 <td> Total: $<a id="total" data-role="input"/>0</td>
-                <td width=35%><img src="img/cartmas.jpg" height="40%" width="40%" /> </td>
-                <td width=35%><img src="img/back.png" height="25%" width="25%" onclick="$.mobile.changePage('#payments')" /> </td>
-                <td width=35%><img src="img/home2.jpg" height="25%" width="25%" onclick="$.mobile.changePage('#home')" /> </td>
+                <td><img src="img/cartmas.jpg" onclick="AgregaCarro();"/> </td>
+                <td><img src="img/back.png" onclick="$.mobile.changePage('#payments')" /> </td>
+                <td><img src="img/home2.jpg" onclick="$.mobile.changePage('#home')" /> </td>
                 </tr>
                 </table>
             </center>
