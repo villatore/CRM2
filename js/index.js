@@ -494,16 +494,31 @@ function Muestra(){
             dataType: 'jsonp',
             success: function (data) {
                 if (data.status != "error") {
-                    $("#title").html(data.post.title);
-                    $(target_div).append(data.post.content);
-                    $(target_div).append("<small>" + data.post.date + "</small>");
-                    $("#precio").html(data.post.id);
-                    $("#unidad").html(data.post.comment_status);
-                    console.log(data.post);
-                    Resta();
-                    escribeEstado("");
-                    ExisteProducto = true;
-                    Producto = data;
+                    if (data.post != undefined){
+                        $("#title").html(data.post.title);
+                        $(target_div).append(data.post.content);
+                        $(target_div).append("<small>" + data.post.date + "</small>");
+                        $("#precio").html(data.post.id);
+                        $("#unidad").html(data.post.comment_status);
+                        Resta();
+                        escribeEstado("");
+                        ExisteProducto = true;
+                        Producto = data;
+                    } else if (data.page != undefined){
+                        $("#title").html(data.page.title);
+                        $(target_div).append(data.page.content);
+                        $(target_div).append("<small>" + data.page.date + "</small>");
+                        $("#precio").html(data.page.custom_fields.mp_sale_price);
+                        $("#unidad").html(data.page.excerpt);
+                        Resta();
+                        escribeEstado("");
+                        ExisteProducto = true;
+                        Producto = data;
+                    } else {
+                        LimpiaProducto();
+                        $("#title").html("<a style='color:#FF0000'>No se pudo leer el artículo...</a>");
+                        ExisteProducto = false;
+                    }
                 } else {
                     LimpiaProducto();
                     $("#title").html("<a style='color:#FF0000'>Está información no fue encontrada, consulte a su asesor...</a>");
