@@ -1,1 +1,3 @@
 MarketPress Lite
+http://www.mobiledevelopersolutions.com/home/start/twominutetutorials/tmt3
+https://github.com/JaysonRaymond/BarcodeScanner.git
