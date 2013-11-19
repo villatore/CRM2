@@ -1,4 +1,4 @@
-(function ($) {
+﻿(function ($) {
 
     function bindEvents() {
         document.addEventListener('pause', onPause, false);
@@ -277,10 +277,10 @@
 
         navigator.notification.vibrate(500);
         console.log('inicia camara.............');
-        //navigator.camera.getPicture(onPhotoSuccess, onPhotoFail, { quality: 50 });
-        var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
+        navigator.camera.getPicture(onPhotoSuccess, onPhotoFail, { quality: 50 });
+        //var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
 
-        scanner.scan(function (result) { alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); }, function (error) { alert("Scanning failed: " + error); });
+        //scanner.scan(function (result) { alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); }, function (error) { alert("Scanning failed: " + error); });
 
         console.log('termina camara.............');
 
