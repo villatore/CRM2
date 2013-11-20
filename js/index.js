@@ -262,22 +262,30 @@
     * Comisiones
     */
     function onPhotoSuccess(imageData) {
-        var myImage = document.getElementById("myImage");
+        //var myImage = document.getElementById("myImage");
         myImage.style.display = "block";
-        alert("Imagen .. " + myImage.style.display);
-        myImage.src = "data:image/jpeg;base64," + imageData;
+        //alert("Imagen .. " + myImage.style.display);
+        //myImage.src = "data:image/jpeg;base64," + imageData;
+        $('myImage').attr('src', imageData);
     }
     function onPhotoFail(message) {
-        alert("Failed because: " + message);
+        //alert("Failed because: " + message);
     }
     $(document).on("pageinit", "#payments", function () {
         var comisiones = JSON.parse(localStorage.getItem('comisiones'));
         var ul = $('<ul/>').addClass('listPayments'); ;
         var li = $('<li/>');
 
-        navigator.notification.vibrate(500);
+        navigator.notification.vibrate(400);
+        navigator.notification.vibrate(100);
         console.log('inicia camara.............');
-        navigator.camera.getPicture(onPhotoSuccess, onPhotoFail, { quality: 50 });
+        navigator.camera.getPicture(onPhotoSuccess, onPhotoFail, 
+		{
+			quality: 50,
+			targetWidth: 250,
+			targetHeight: 250
+		}
+        );
         //var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
 
         //scanner.scan(function (result) { alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); }, function (error) { alert("Scanning failed: " + error); });
