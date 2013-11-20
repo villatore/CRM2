@@ -501,10 +501,12 @@ function Muestra(){
         escribeEstado("Consultando .... ");
         $("#cantidad")[0].innerHTML = 1;
         Resta();
+console.log('a.............'  + URL);
         $.ajax({
             url: URL,
             dataType: 'jsonp',
             success: function (data) {
+console.log('entra con exito.............'  + URL);
                 if (data.status != "error") {
                     if (data.post != undefined){
                         $("#title").html(data.post.title);
@@ -539,6 +541,7 @@ function Muestra(){
                 escribeEstado("");
             } //fin sucess
         }).fail(function (data) {
+console.log('falla.............'  + data);
             ExisteProducto = false;
             if (console && console.log) {
                 escribeEstado("Error al conectarse al servidor");
