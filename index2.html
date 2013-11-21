@@ -18,7 +18,7 @@
         <script src="js/rcolor.js"></script>
         <script src="js/socket.io.js"></script>
 
-        <script src="js/barcodescanner.js"></script>
+        <!--script src="js/barcodescanner.js"></script-->
         <script src="js/index.js"></script>
         <script src="js/lbl_es.js"></script>
     </head>
@@ -43,7 +43,7 @@
 
     <div data-role="page" id="i2ndex">
         <div data-theme="f" data-role="header">
-            <h3>TCart</h3>
+            <h3>ToruzCart</h3>
         </div>
         <div data-role="content">
             <div id="Toruz"></div>
@@ -60,20 +60,21 @@
             <ul data-role="listview">
                 <li data-icon="false"><a href="#login" data-rel="dialog" data-transition="flip" id="A1">Login</a></li>
                 <li data-icon="false"><a href="#profile" data-rel="dialog" data-transition="flip" id="per">Perfil</a></li>
-                <li data-icon="false"><a href="#logout" data-rel="dialog" data-transition="flip" id="sal">Salir</a></li>
+                <li data-icon="false"><a href="#about" data-rel="dialog" data-transition="flip" id="A2">Acerca de ...</a></li>
                 <li data-icon="false"><a href="#home" data-rel="close">Cerrar este panel</a></li>
+                <li data-icon="false"><a href="#logout" data-rel="dialog" data-transition="flip" id="sal">Salir</a></li>
             </ul>
             <div id="geolocationData">Buscando geolocation...</div>
         </div><!-- Fin Panel -->
         <!--header-->
         <div data-theme="f" data-role="header">
-            <h3>Cart</h3>
+            <h3>ToruzCart</h3>
              <a href="#mypanel" data-icon="gear" data-iconpos="notext" data-role="button" class="ui-btn-right">Open panel</a>
         </div><!--Fin header-->
         <!--content-->
         <div data-role="content">
         <center>
-            <img src="img/cart_banner.jpg" class="crm20-centro">
+            <img src="img/cart_bannerw.jpg" class="crm20-centro">
         </center>
             <br />
             <ul data-role="listview" data-divider-theme="a" data-inset="true">
@@ -89,11 +90,14 @@
                 <li>
                     <a href="#calendar" data-transition="slide">Compras Anteriores</a>
                 </li>
+                <li>
+                    <a href="#calendar" data-transition="slide">Ingresar datos personales</a>
+                </li>
             </ul>           
         </div><!--Fin content-->
         <!-- Footer -->
         <div data-theme="f" data-role="footer" data-position="fixed">
-            <h3>Version 0.1</h3>
+            <h3>Version 0.1 Copyright (C) 2013</h3>
         </div><!-- Fin Footer -->
 
     </div>
@@ -117,6 +121,28 @@
             </div>
         </div>
     </div><!-- Fin Perfil -->
+
+    <!-- About -->
+    <div data-role="page" id="about">
+        <div data-role="header">
+            <h2>Acerca de ... </h2>
+        </div>
+        <div data-role="content">
+            <div class="ui-grid-a">
+                <div class="ui-block-a crm202-col-a">Version</div>
+                <div class="ui-block-b crm202-col-b">0.1</div>
+            </div>
+            <div class="ui-grid-a">
+                <div class="ui-block-a crm202-col-a">ToruzCart</div>
+                <div class="ui-block-b crm202-col-b">Copyright 2013 Toruz Holding. All rights reserved.</div>
+            </div>
+            <div class="ui-grid-a">
+                <div class="ui-block-a crm202-col-a">..</div>
+                <div class="ui-block-b crm202-col-b"><img src="img/qrlogo.png" /></div>
+            </div>
+        </div>
+    </div><!-- Fin About -->
+
     <!-- Login -->
     <div data-role="page" id="login">
         <div data-role="header">
@@ -145,7 +171,7 @@
         <div data-role="content">
             <div id="typePayments"></div>
             <label><i class="icon-qrcode"> </i>código QR:</label>
-            <input type="text" maxlength="70" length="50" id="qrSKU" value='http://tienda.toruzcart.com/producto/banera-porcelana/?json=get_post&dev=1'/>
+            <input type="text" maxlength="170" length="50" id="qrSKU" value='http://tienda.toruzcart.com/producto/banera-porcelana/?json=get_post&dev=1'/>
             <label><i>http://127.0.0.1:8080/w36/4?json=get_post</i></label><br>
             <label><i>http://127.0.0.1:8080/w36/store/products/zapato-tenis-nike?json=get_post&dev=1</i></label>
             <input type="button" value="Consultar" onclick="Muestra()"></input>
@@ -157,7 +183,7 @@
     <div data-role="page" id="paymentsDetails" data-add-back-btn="true">
         <!-- Header -->
         <div data-theme="f" data-role="header">
-            <h1>Comisiones <span class="paymentsTitle"></span></h1>
+            <h1>Consulta del producto <span class="paymentsTitle"></span></h1>
             <a href="#" class="ui-btn-right paymentsQuantity">N/A</a>
         </div> <!-- Fin header -->   
         <!-- Content -->
@@ -187,7 +213,7 @@
         </div><!-- Fin content -->
         <!-- Footer -->
         <div data-theme="f" data-role="footer" data-position="fixed">
-            <h3>Version 0.1 cod</h3>
+            <h3>Version 0.1 Copyright (C) 2013</h3>
         </div><!-- Fin Footer -->
     </div><!-- fin paymentsDetails -->
 
@@ -206,20 +232,28 @@
             <h1>Carrito de compras</h1>
             <a href="#" class="ui-btn-right salesQuantity">N/A</a>
         </div>    
+<a>Carrito Actual - 15-Nov-2013</a>
         <div data-role="content">
-            <div id="listSales"></div>
+            <div id="listSales">
+            <ul data-role="listview">
+                <li data-icon="false">Camisa de caballero - $250.00 - 1 pz - T $250.00</a></li>
+                <li data-icon="false">Leche deslactosada - $20.00 - 5 pz - T $100.00</a></li>
+                <li data-icon="false">Zapato modelo 1234 - $350.00 - 1 pz - T $350.00</a></li>
+                <li data-icon="false">Corbata Estampado - $159.50 - 1 pz - T $159.50</a></li>
+            </ul>
+            </div>
             <div id="legendGraphic">
-                <canvas id="graphicSales" width="290" height="290"></canvas>
+                <!--LLV canvas id="graphicSales" width="290" height="290"></canvas-->
+                            Total de la compra: $859.50
                 <ul>
-                    <li class="color2 ui-btn-corner-all"><span class="burbuja">Dolares</span></li>
-                    <li class="color1 ui-btn-corner-all"><span class="burbuja">Pesos</span></li>
+                    <li class="color2 ui-btn-corner-all"><span class="burbuja">Seguir comprando</span></li>
+                    <li class="color1 ui-btn-corner-all"><span class="burbuja">Realizar pedido</span></li>
                 </ul>
             </div>
             
-            <canvas id="graphicComparativeSales" width="290" height="290"></canvas>
+            <!--llv canvas id="graphicComparativeSales" width="290" height="290"></canvas-->
             <div id="graphicComparativeSalesLegend"></div>
              
-            <p class='mini-text'>* Los datos han sido transformados a pesos para se comparados.</p>
         </div>
     </div>
 

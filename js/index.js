@@ -504,7 +504,7 @@ function Muestra(){
 console.log('a.............'  + URL);
         $.ajax({
             url: URL,
-            dataType: 'jsonp',
+            dataType: 'json',
             success: function (data) {
 console.log('entra con exito.............'  + URL);
                 if (data.status != "error") {
@@ -563,7 +563,7 @@ function AgregaCarro() {
                         };
         delete jsonUser.user['ventas'];
         delete jsonUser.user['comisiones'];
-        window.localStorage.setItem("userFirstJson",JSON.stringify(jsonUser)); // para MongoDB
+        window.localStorage.setItem("userFirst",JSON.stringify(jsonUser)); // para MongoDB
         window.localStorage.setItem("uuid",device.uuid);
         window.localStorage.setItem("ventas",JSON.stringify(jsonUser.ventas));
         window.localStorage.setItem("comisiones",JSON.stringify(jsonUser.comisiones));
