@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="initial-scale=1, user-scalable=yes, maximum-scale=3, minimum-scale=1, width=device-width, height=device-height">
-        <title>Cart</title>
+        <title>ToruzCart</title>
         
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
@@ -17,12 +17,13 @@
         <script src="js/Chart.min.js"></script>
         <script src="js/rcolor.js"></script>
         <script src="js/socket.io.js"></script>
+        <script src="js/clock.js"></script>
 
         <!--script src="js/barcodescanner.js"></script-->
         <script src="js/index.js"></script>
         <script src="js/lbl_es.js"></script>
     </head>
-    <body>
+    <body onload="updateClock(); setInterval('updateClock()', 1000 )">
     <script>
         $(function() {
             FastClick.attach(document.body);
@@ -38,7 +39,6 @@
                 $.mobile.changePage('#home');
             }
         });
-</script>
     </script>
 
     <div data-role="page" id="i2ndex">
@@ -61,7 +61,8 @@
                 <li data-icon="false"><a href="#login" data-rel="dialog" data-transition="flip" id="A1">Login</a></li>
                 <li data-icon="false"><a href="#profile" data-rel="dialog" data-transition="flip" id="per">Perfil</a></li>
                 <li data-icon="false"><a href="#about" data-rel="dialog" data-transition="flip" id="A2">Acerca de ...</a></li>
-                <li data-icon="false"><a href="#home" data-rel="close">Cerrar este panel</a></li>
+                <li data-icon="false">_______</li>
+                <li data-icon="false"><a href="#home" data-rel="close">>>Cerrar este panel</a></li>
                 <li data-icon="false"><a href="#logout" data-rel="dialog" data-transition="flip" id="sal">Salir</a></li>
             </ul>
             <div id="geolocationData">Buscando geolocation...</div>
@@ -74,17 +75,17 @@
         <!--content-->
         <div data-role="content">
         <center>
-            <img src="img/cart_bannerw.jpg" class="crm20-centro">
+            <img src="img/cart_banner.jpg" class="crm20-centro">
         </center>
             <br />
             <ul data-role="listview" data-divider-theme="a" data-inset="true">
-                <li data-role="list-divider" role="heading">Bienvenido</li>
+                <li data-role="list-divider" role="heading"><center>Bienvenido  - <span id="clock">&nbsp;</span></center></li>
                 <li>
-                    <a href="#payments" data-transition="slide">Tomar Código</a>
+                    <a href="#payments" data-transition="slide" class="icon-camera" style="font-size: xx-large"> Tomar Codigo1234567890</a>
                     <span class="ui-li-count cantComisiones"></span>
                 </li>
                 <li>
-                    <a href="#sales" data-transition="slide">Carrito de compras</a>
+                    <a href="#sales" data-transition="slide" class="icon-shopping-cart"> Carrito de compras</a>
                     <span class="ui-li-count cantVentas"></span>
                 </li>
                 <li>
@@ -97,7 +98,7 @@
         </div><!--Fin content-->
         <!-- Footer -->
         <div data-theme="f" data-role="footer" data-position="fixed">
-            <h3>Version 0.1 Copyright (C) 2013</h3>
+            <h3 id="footerT">Copyright (C) 2013</h3>
         </div><!-- Fin Footer -->
 
     </div>
@@ -184,7 +185,7 @@
         <!-- Header -->
         <div data-theme="f" data-role="header">
             <h1>Consulta del producto <span class="paymentsTitle"></span></h1>
-            <a href="#" class="ui-btn-right paymentsQuantity">N/A</a>
+            <a href="#sales" data-iconpos="notext" data-role="button" class="ui-btn-right icon-shopping-cart"></a>
         </div> <!-- Fin header -->   
         <!-- Content -->
         <div data-role="content">
@@ -213,7 +214,7 @@
         </div><!-- Fin content -->
         <!-- Footer -->
         <div data-theme="f" data-role="footer" data-position="fixed">
-            <h3>Version 0.1 Copyright (C) 2013</h3>
+            <h3 id="footerT2">Copyright (C) 2013</h3>
         </div><!-- Fin Footer -->
     </div><!-- fin paymentsDetails -->
 
@@ -276,6 +277,8 @@
     </div>
 <script>
     Textos();
+    document.getElementById("footerT").innerHTML = "Version 0.1 Copyright (C) 2013";
+    document.getElementById("footerT2").innerHTML = "Version 0.1 Copyright (C) 2013";
 </script>
     </body>
 </html>
