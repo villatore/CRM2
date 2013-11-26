@@ -22,6 +22,12 @@
         <!--script src="js/barcodescanner.js"></script-->
         <script src="js/index.js"></script>
         <script src="js/lbl_es.js"></script>
+        <style type="text/css">
+            .style1
+            {
+                width: 100%;
+            }
+        </style>
     </head>
     <body onload="updateClock(); setInterval('updateClock()', 1000 )">
     <script>
@@ -80,21 +86,46 @@
             <br />
             <ul data-role="listview" data-divider-theme="a" data-inset="true">
                 <li data-role="list-divider" role="heading"><center>Bienvenido  - <span id="clock">&nbsp;</span></center></li>
-                <li>
+                <!--li>
                     <a href="#payments" data-transition="slide" class="icon-camera" style="font-size: xx-large"> Tomar Codigo1234567890</a>
                     <span class="ui-li-count cantComisiones"></span>
                 </li>
                 <li>
                     <a href="#sales" data-transition="slide" class="icon-shopping-cart"> Carrito de compras</a>
-                    <span class="ui-li-count cantVentas"></span>
+                    
                 </li>
                 <li>
                     <a href="#calendar" data-transition="slide">Compras Anteriores</a>
                 </li>
                 <li>
                     <a href="#calendar" data-transition="slide">Ingresar datos personales</a>
-                </li>
-            </ul>           
+                </li-->
+            </ul>
+            <center>
+            <table width="70%" data-divider-theme="a">
+                <tr>
+                    <td><center>
+                        <a href="#payments" data-transition="slide" class="icon-camera" style="font-size: 50px"></a>
+                        <br /><a href="#payments" data-transition="slide"> Tomar Codigo</a>
+                        </center></td>
+                    <td><center>
+                        <a href="#sales" data-transition="slide" class="icon-shopping-cart" style="font-size: 50px"></a>
+                        <br /><a href="#sales" data-transition="slide"> Carrito de compras</a>
+                        <span class="ui-li-count cantVentas"></span>
+                        </center></td>
+                </tr>
+                <tr>
+                    <td><center>
+                        <a href="#calendar" data-transition="slide" class="icon-calendar" style="font-size: 50px"></a>
+                        <br /><a href="#calendar" data-transition="slide"> Compras Anteriores</a>
+                        </center></td>
+                    <td><center>
+                        <a href="#calendar" data-transition="slide" class="icon-pencil" style="font-size: 50px"></a>
+                        <br /><a href="#calendar" data-transition="slide"> Ingresar datos personales</a>
+                        </center></td>
+                </tr>
+            </table>
+            </center>
         </div><!--Fin content-->
         <!-- Footer -->
         <div data-theme="f" data-role="footer" data-position="fixed">
@@ -277,8 +308,8 @@
     </div>
 <script>
     Textos();
-    document.getElementById("footerT").innerHTML = "Version 0.1 Copyright (C) 2013";
-    document.getElementById("footerT2").innerHTML = "Version 0.1 Copyright (C) 2013";
+    document.getElementById("footerT").innerHTML = "Version 0.11 Copyright (C) 2013";
+    document.getElementById("footerT2").innerHTML = "Version 0.11 Copyright (C) 2013";
 </script>
     </body>
 </html>
